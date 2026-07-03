@@ -11,7 +11,7 @@ class ExpenseTracker:
         self.expenses = []
         self._load()
 
-    # ── File I/O ─────────────────────────────────────────────────────────────
+    # File I/O
 
     def _load(self):
         # Load expenses from CSV if file exists
@@ -31,7 +31,7 @@ class ExpenseTracker:
             # If no expenses, write an empty file with headers
             pd.DataFrame(columns=['date', 'category', 'amount', 'description']).to_csv(self.FILE, index=False)
 
-    # ── Core Operations ───────────────────────────────────────────────────────
+    # Core Operations
 
     def add(self, amount, category, description):
         expense = Expense(amount, category, description)
@@ -53,7 +53,7 @@ class ExpenseTracker:
     def by_category(self, category):
         return [e for e in self.expenses if e.category.lower() == category.lower()]
 
-    # ── Pandas Analysis ───────────────────────────────────────────────────────
+    # Pandas Analysis
 
     def _to_dataframe(self):
         if not self.expenses:
